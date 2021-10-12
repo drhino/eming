@@ -1,5 +1,6 @@
 FROM php:7.4-apache-bullseye
 
+RUN a2dismod deflate -f
 RUN a2enmod ssl
 RUN a2ensite default-ssl.conf
 RUN docker-php-ext-install pdo_mysql
