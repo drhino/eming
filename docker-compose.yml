@@ -1,0 +1,16 @@
+# https://github.com/drhino/eming
+version: "3.1"
+services:
+
+  php:
+    image: eming:0.1.1
+    restart: always
+    ports:
+      - 2096:443 # Cloudflare Proxy
+    volumes:
+      - www_data:/var/www/html/
+      # Cloudflare Origin Certificate is already set and managed through Portainer.
+      - /var/lib/docker/volumes/portainer_data/_data/certs/:/mnt/portainer/certs/:ro
+
+volumes:
+  www_data:
