@@ -1,9 +1,11 @@
 FROM php:7.4-apache-bullseye
 
-RUN apt-get update
-RUN apt-get install ssl-cert wget
+RUN apt update
+RUN apt install ssl-cert
 RUN a2enmod ssl
 RUN a2ensite default-ssl.conf
-RUN wget -O /etc/apache2/sites-available/default-ssl.conf \
-https://raw.githubusercontent.com/drhino/eming/main/default-ssl.conf
 RUN docker-php-ext-install pdo_mysql
+
+COPY default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
+COPY ssl.conf /etc/apache2/mods-available/ssl.conf
+COPY origin_ca_ecc_root.pem /etc/ssl/certs/origin_ca_ecc_root.pem
