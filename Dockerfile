@@ -1,7 +1,5 @@
 FROM php:7.4-apache-bullseye
 
-RUN apt update
-RUN apt install ssl-cert
 RUN a2enmod ssl
 RUN a2ensite default-ssl.conf
 RUN docker-php-ext-install pdo_mysql
