@@ -2,7 +2,7 @@ version: "3.1"
 services:
 
   php:
-    image: eming:0.2.10
+    image: eming:0.2.11
     restart: always
     ports:
       - 443:443
