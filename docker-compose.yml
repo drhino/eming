@@ -1,15 +1,25 @@
-# https://github.com/drhino/eming
 version: "3.1"
 services:
 
   php:
-    image: eming:0.1.1
+    image: eming:0.2.10
     restart: always
     ports:
-      - 2096:443 # Cloudflare Proxy
+      - 443:443
     volumes:
-      - www_data:/var/www/html/
-      - /root/OriginServerCert/:/mnt/OriginServerCert/:ro
+      - www_data:/var/www/:ro
+      - /var/lib/docker/volumes/portainer_data/_data/certs/:/etc/ssl/private/:ro
+
+  db:
+    image: mariadb:10.1.19 # 10.1.48-bionic
+    restart: always
+    ports:
+      - 127.0.0.1:4406:3306
+    #environment:
+    #  - MYSQL_ROOT_PASSWORD=
+    volumes:
+      - db_data:/var/lib/mysql/
 
 volumes:
   www_data:
+  db_data:
