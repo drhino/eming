@@ -9,8 +9,7 @@ services:
       - 2096:443 # Cloudflare Proxy
     volumes:
       - www_data:/var/www/html/
-      # Cloudflare Origin Certificate is already set and managed through Portainer.
-      - /var/lib/docker/volumes/portainer_data/_data/certs/:/mnt/portainer/certs/:ro
+      - /root/OriginServerCert/:/mnt/OriginServerCert/:ro
 
 volumes:
   www_data:
