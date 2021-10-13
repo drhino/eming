@@ -1,3 +1,3 @@
 #!/usr/bin/bash
 
-docker image build --tag eming:0.2.12 .
+docker image build --tag eming:0.2.13 .
